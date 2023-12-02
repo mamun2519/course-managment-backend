@@ -30,7 +30,7 @@ export const EnrolledCourseSchema = new Schema<
 );
 
 // Course Enrolled Model
-export const Team = model<IEnrolledCourse, EnrolledCourseModel>(
+export const EnrolledCourse = model<IEnrolledCourse, EnrolledCourseModel>(
   "Enrolled",
   EnrolledCourseSchema
 );
