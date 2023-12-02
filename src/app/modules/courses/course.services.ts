@@ -75,8 +75,9 @@ const getAllCourseFromDB = async (
   };
 };
 
-export const TeamService = {
+export const CourseService = {
   createCourseFromDB,
   courseDetailsByIdFromId,
   // CourseDeleteByIdFromDB,
+  getAllCourseFromDB,
 };
