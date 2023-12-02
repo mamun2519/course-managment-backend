@@ -1,7 +1,6 @@
 import { Model } from "mongoose";
 // course interface
 export type ICourse = {
-  _id: string;
   name: string;
   instructor: string;
   description: string;

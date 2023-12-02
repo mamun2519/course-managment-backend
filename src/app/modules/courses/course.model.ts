@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { CourseModel, ICourse } from "./course.interface";
 
-// User Schema
+// Course Schema
 export const CourseSchema = new Schema<ICourse, CourseModel>(
   {
     name: { type: String, required: true },
