@@ -4,7 +4,6 @@ import { CourseModel, ICourse } from "./course.interface";
 // User Schema
 export const CourseSchema = new Schema<ICourse, CourseModel>(
   {
-    id: { type: Number, required: true, unique: true },
     name: { type: String, required: true },
     instructor: { type: String, required: true },
     description: { type: String, required: true },
@@ -47,5 +46,5 @@ export const CourseSchema = new Schema<ICourse, CourseModel>(
   }
 );
 
-// User Model
-export const User = model<ICourse, CourseModel>("Courses", CourseSchema);
+// Course Model
+export const Course = model<ICourse, CourseModel>("Courses", CourseSchema);
