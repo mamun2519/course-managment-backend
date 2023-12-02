@@ -6,6 +6,8 @@ import { IGenericResponse } from "../../../interface/common";
 import { PaginationHelper } from "../../../utils/pagination";
 import { CourseSearchAbleFiled } from "./course.constant";
 import { SortOrder } from "mongoose";
+import API_Error from "../../../error/apiError";
+import { User } from "../auth/auth.model";
 
 const createCourseFromDB = async (data: ICourse): Promise<ICourse> => {
   const course = await Course.create(data);
@@ -73,6 +75,46 @@ const getAllCourseFromDB = async (
     },
     data: course,
   };
+};
+
+const courseLikedIntoDB = async (userId: string, courseId: string) => {
+  const course = await Course.findById(courseId);
+  if (!course) {
+    throw new API_Error(StatusCodes.NOT_FOUND, "Course Not Found");
+  }
+
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new API_Error(StatusCodes.NOT_FOUND, "User Not Found");
+  }
+  // // Check if the user already liked the product
+  // if (!course.likes.includes(userId)) {
+  //   // Add user ID to likes array
+  //   course.likes.push(userId);
+  //   await course.save();
+  // } else {
+  //   const indexOfUser = Course.likes.indexOf(userId);
+  //   if (indexOfUser !== -1) {
+  //     // Remove user ID from likes array
+  //     Course.likes.splice(indexOfUser, 1);
+  //     await Course.save();
+  // }
+  if (course.likes.some((like) => like.user.equals(userId))) {
+    // return res.status(400).json({ message: "User already liked the product" });
+    const likeIndex = course.likes.findIndex((like) =>
+      like.user.equals(user._id)
+    );
+    if (likeIndex !== -1) {
+      course.like -= 1;
+      course.likes.splice(likeIndex, 1);
+      await course.save();
+    }
+  }
+
+  // Add like with user ID
+  course.like += 1;
+  course.likes.push({ user: userId });
+  await course.save();
 };
 
 export const CourseService = {

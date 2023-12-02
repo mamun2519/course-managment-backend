@@ -37,6 +37,18 @@ export const CourseSchema = new Schema<ICourse, CourseModel>(
       ],
       required: true,
     },
+    like: {
+      type: Number,
+      default: 0,
+    },
+    likes: [
+      {
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "User",
+        },
+      },
+    ],
   },
   {
     timestamps: true,

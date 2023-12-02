@@ -1,4 +1,5 @@
-import { Model } from "mongoose";
+import { Model, ObjectId } from "mongoose";
+import { IUser } from "../auth/auth.interface";
 // course interface
 export type ICourse = {
   name: string;
@@ -19,6 +20,10 @@ export type ICourse = {
     id: number;
     name: string;
     email: string;
+  }[];
+  like: number;
+  likes: {
+    user: ObjectId | IUser | any;
   }[];
 };
 export type CourseModel = Model<ICourse, Record<string, unknown>>;
