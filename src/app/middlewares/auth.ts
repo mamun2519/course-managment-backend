@@ -2,9 +2,10 @@ import { NextFunction, Request, Response } from "express";
 
 import config from "../../config";
 import { Secret } from "jsonwebtoken";
-import API_Error from "../../errors/appError";
-import { jwtHelpers } from "../../utils/jwtToken";
+
 import { StatusCodes } from "http-status-codes";
+import API_Error from "../../error/apiError";
+import { jwtHelpers } from "../../utils/jwtToken";
 
 const auth = () => async (req: Request, res: Response, next: NextFunction) => {
   try {
