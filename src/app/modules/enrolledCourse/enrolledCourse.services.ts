@@ -37,8 +37,26 @@ const deleteEnrolledCourseFromDB = async (
   };
 };
 
+const enrolledCourseDetailsByIdFromId = async (
+  id: string
+): Promise<IEnrolledCourse | null> => {
+  const course = await EnrolledCourse.findById(id).populate("course");
+  return course;
+};
+
+const enrolledCourseUpdateByIntoDB = async (
+  id: string,
+  data: { status: string }
+): Promise<IEnrolledCourse | null> => {
+  const course = await EnrolledCourse.findByIdAndUpdate(id, data).populate(
+    "course"
+  );
+  return course;
+};
 export const EnrolledCourseService = {
   createEnrolledCourseFromDB,
   myEnrolledCourseFromDB,
   deleteEnrolledCourseFromDB,
+  enrolledCourseDetailsByIdFromId,
+  enrolledCourseUpdateByIntoDB,
 };
