@@ -2,8 +2,8 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import { StatusCodes } from "http-status-codes";
 
-import { RootRoutes } from "./app/routes";
 import globalErrorHandler from "./app/middlewares/globalError";
+import { RootRoutes } from "./app/routes";
 const app: Application = express();
 
 // Project Middleware

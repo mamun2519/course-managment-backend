@@ -12,3 +12,8 @@ export type IUserFilters = {
   name: string;
   email: string;
 };
+
+export type IPasswordChange = {
+  email: string;
+  newPassword: string;
+};

@@ -1,11 +1,11 @@
 import { StatusCodes } from "http-status-codes";
-import API_Error from "../../../errors/appError";
-import { IUser } from "../user/user.interface";
-import { User } from "../user/user.model";
+
 import { jwtHelpers } from "../../../utils/jwtToken";
 import config from "../../../config";
 import { Secret } from "jsonwebtoken";
-import { IPasswordChange } from "./auth.interface";
+import { IPasswordChange, IUser } from "./auth.interface";
+import { User } from "./auth.model";
+import API_Error from "../../../error/apiError";
 
 export const signUpUserFromDB = async (
   data: IUser
