@@ -14,7 +14,7 @@ const createCourse = catchAsyncFn(async (req: Request, res: Response) => {
   sendApiResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,
-    message: "team create successfully",
+    message: "Course create successfully",
     data: result,
   });
 });
@@ -30,7 +30,7 @@ const allCourse = catchAsyncFn(async (req: Request, res: Response) => {
   sendApiResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,
-    message: "my team Fetch successfully",
+    message: "Course Fetch successfully",
     data: result,
   });
 });
@@ -39,7 +39,21 @@ const courseDetails = catchAsyncFn(async (req: Request, res: Response) => {
   sendApiResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,
-    message: "deleteTeam successfully",
+    message: "Course Details fetch successfully",
+    data: result,
+  });
+});
+
+const courseLiked = catchAsyncFn(async (req: Request, res: Response) => {
+  const user = req.user as JwtPayload;
+  const result = await CourseService.courseLikedIntoDB(
+    user.userId as string,
+    req.params.courseId
+  );
+  sendApiResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Liked  successfully",
     data: result,
   });
 });
@@ -48,4 +62,5 @@ export const CourseController = {
   allCourse,
   createCourse,
   courseDetails,
+  courseLiked,
 };

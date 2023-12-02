@@ -122,4 +122,5 @@ export const CourseService = {
   courseDetailsByIdFromId,
   // CourseDeleteByIdFromDB,
   getAllCourseFromDB,
+  courseLikedIntoDB,
 };
