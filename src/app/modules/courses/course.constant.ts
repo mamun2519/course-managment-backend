@@ -1,4 +1,4 @@
-export const CourseSearchAbleFiled = ["first_name", "last_name"];
+export const CourseSearchAbleFiled = ["name", "instructor"];
 export const CourseFilterAbleFiled = [
   "searchTerm",
   "domain",

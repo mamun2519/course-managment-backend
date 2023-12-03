@@ -20,6 +20,10 @@ export const EnrolledCourseSchema = new Schema<
       ref: "Courses",
       required: true,
     },
+    status: {
+      type: String,
+      default: "Pending",
+    },
   },
   {
     timestamps: true,

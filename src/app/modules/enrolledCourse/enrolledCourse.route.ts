@@ -3,7 +3,7 @@ import { EnrolledCourseController } from "./enrolledCourse.controller";
 import auth from "../../middlewares/auth";
 
 const router = express.Router();
-router.post("/", EnrolledCourseController.createEnrolledCourse);
+router.post("/", auth(), EnrolledCourseController.createEnrolledCourse);
 router.get("/:id", EnrolledCourseController.enrolledCourseDetails);
 router.delete("/:id", EnrolledCourseController.deleteEnrolledCourse);
 router.patch("/:id", EnrolledCourseController.updatedEnrolledCourse);

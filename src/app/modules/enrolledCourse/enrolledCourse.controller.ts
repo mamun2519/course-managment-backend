@@ -9,6 +9,7 @@ import catchAsyncFn from "../../../utils/catchAsynfn";
 
 const createEnrolledCourse = catchAsyncFn(
   async (req: Request, res: Response) => {
+    console.log(req.body);
     const result = await EnrolledCourseService.createEnrolledCourseFromDB(
       req.body
     );
